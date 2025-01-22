@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+project-root/
+├── public/
+│   ├── images/
+│   │   ├── card1.jpeg
+│   │   ├── card2.jpeg
+│   │   └── ... (other product images)
+├── src/
+│   ├── components/
+│   │   ├── Cart.tsx              # Cart component
+│   │   ├── ProductCard.tsx       # Individual product card
+│   │   ├── Layout.tsx            # Layout wrapper for common layouts
+│   │   └── Navbar.tsx            # Navbar (optional, for navigation)
+│   ├── context/
+│   │   └── CartContext.tsx       # Context API for cart management
+│   ├── pages/
+│   │   ├── _app.tsx              # Global App wrapper
+│   │   ├── index.tsx             # Home page
+│   │   ├── products/
+│   │   │   ├── index.tsx         # Product listing page (all products)
+│   │   │   └── [id].tsx          # Dynamic product page for individual products
+│   │   └── cart.tsx              # Cart page to display added products
+│   ├── styles/
+│   │   └── globals.css           # Global styles
+│   └── utils/
+│       └── data.ts               # Data for product listing (if not fetched from an API)
+├── package.json
+└── next.config.js
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Explanation of the Structure:
+public/:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Contains static assets like images for products.
+src/components/:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Cart.tsx: Component for rendering the cart items.
+ProductCard.tsx: Component for rendering individual product cards.
+Layout.tsx: A reusable layout component to wrap pages with a consistent header, footer, etc.
+Navbar.tsx: Optional navigation bar for navigating between pages (e.g., home, products, cart).
+src/context/:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+CartContext.tsx: Provides global state for cart functionality.
+src/pages/:
 
-## Learn More
+_app.tsx: Wraps the entire app with the CartProvider.
+index.tsx: Landing page or home page (e.g., promotional content or product highlights).
+products/index.tsx: Lists all products. This page renders the product cards using the ProductCard component.
+products/[id].tsx: Dynamic route for individual product details. It uses the id parameter to fetch and display a specific product's details.
+cart.tsx: Page to show all items added to the cart.
+src/styles/:
 
-To learn more about Next.js, take a look at the following resources:
+globals.css: Global styles for the entire application.
+src/utils/:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+data.ts: Contains mock data for products if you're not fetching data from an API.
