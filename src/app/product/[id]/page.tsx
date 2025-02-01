@@ -22,7 +22,7 @@ const page = async () => {
 
   return (
     <>
-        <NavBar />
+        {/* <NavBar /> */}
         <ProductDetails product={product} />
     </>
 

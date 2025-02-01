@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header/>
-        <NavBar/>
+        {/* <NavBar/> */}
         <HeroSection/>
         <div className="mx-1 sm:mx-3 md:mx-6 lg:mx-20">
         {children}

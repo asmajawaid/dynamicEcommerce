@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { urlForImage } from '@/sanity/lib/image';
+import { urlFor } from '@/sanity/lib/image';
 
 const Card = ({product}:any) => {
 
@@ -9,7 +9,7 @@ const Card = ({product}:any) => {
     <Link href={`/product/${product.slug.current}`} >
       <div className='bg-white pt-10 drop-shadow-md rounded-lg overflow-hidden'>
           <Image
-              src={urlForImage(product?.images && product.images[0]).url()}
+              src={urlFor(product?.images && product.images[0]).url()}
               alt={product.slug}
               width={220}
               height={100}

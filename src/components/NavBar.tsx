@@ -41,7 +41,7 @@ import { CartContext } from '../context/CartContext';
 export default function NavBar() {
  
 
-    const {totalQuantity, showCart, setShowCart}:any = useContext(CartContext);
+    const {totalQuantity, showCart, setShowCart}: any = useContext(CartContext);
     
     const handleCick = () => {
       setShowCart(!showCart)

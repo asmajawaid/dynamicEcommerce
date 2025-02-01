@@ -1,12 +1,27 @@
 "use client"
 
-import { urlForImage } from '@/sanity/lib/image'
+import { urlFor } from '@/sanity/lib/image'
 import Image from 'next/image'
 import React, { useContext, useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { CartContext } from '../context/CartContext';
+import { useRouter } from 'next/router';
 
 const ProductDetails = ({product}:any) => {
+
+    const router = useRouter();
+  const { id } = router.query;
+
+  // Find the product by ID
+  const productD = product.find((p:any) => p.id === id);
+
+  if (!productD) {
+    return <div>Product not found</div>;
+
+  }
+  console.log("Product:", productD);
+
+
     const [index,setIndex] = useState(0);
     const { cartItems, addProduct, qty, decQty, incQty}:any = useContext(CartContext);
     // console.log(cartItems);
@@ -20,9 +35,9 @@ const ProductDetails = ({product}:any) => {
                 {/* TOP */}
                 <div className='h-[450px] flex items-center mb-[25px]'>
                     <Image
-                        loader={()=>urlForImage(product.images[index]).url()}
-                        src={urlForImage(product.images[index]).url()}
-                        alt={product.images[index]}
+                       // loader={()=>urlFor(product.image[index]).url()}
+                        src={urlFor(product.image[0]).url()} //{urlFor(product.image[index]).url()}
+                        alt={product.title} //{product.image[index]}
                         width={350}
                         height={350}
                         className='object-cover mx-auto'
@@ -31,11 +46,11 @@ const ProductDetails = ({product}:any) => {
 
                 {/* BOTTOM */}
                 <div className='small-images-container'>
-                    {product.images?.map((item:any,i:number)=>(
+                    {product.image?.map((item:any,i:number)=>(
                         <Image
-                            loader={()=>urlForImage(product.images[i]).url()}
-                            src={urlForImage(product.images[i]).url()}
-                            alt={product.images[0]}
+                            //loader={()=>urlFor(product.image[i]).url()}
+                            src={urlFor(product.image[0]).url()} //{urlFor(product.image[i]).url()}
+                            alt={product.title} //{product.image[0]}
                             width={220}
                             height={100}
                             className='object-cover h-32 mx-auto border rounded-xl hover:cursor-pointer'
